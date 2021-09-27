@@ -4,7 +4,7 @@ React App for visualizing data from https://github.com/roman-la/bt-protocol-api.
 
 ## Requirements
 
-- npm (tested with 5.8.0)
+- npm (tested with version 5.8.0)
 
 ## Setup
 

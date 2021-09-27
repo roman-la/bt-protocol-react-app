@@ -13,7 +13,7 @@ In the projects root folder run:
 npm install
 ```
 
-## Running
+## Run
 
 For development mode in the projects root folder run:
 ```

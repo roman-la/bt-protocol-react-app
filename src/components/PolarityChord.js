@@ -13,8 +13,8 @@ class PolarityChord extends React.Component {
 
     componentDidMount() {
         Promise.all([
-            fetch('http://' + window.location.hostname + ':8003/factions'),
-            fetch('http://' + window.location.hostname + ':8003/polarity_chord')
+            fetch('http://infosys3.f4.htw-berlin.de:8003/factions'),
+            fetch('http://infosys3.f4.htw-berlin.de:8003/polarity_chord')
         ])
             .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
             .then(([data1, data2]) => this.setState({

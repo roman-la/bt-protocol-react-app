@@ -1,5 +1,5 @@
 import React from 'react';
-import MaterialTable from 'material-table'
+import { DataGrid } from '@mui/x-data-grid';
 
 class CommentTable extends React.Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class CommentTable extends React.Component {
 
     componentDidMount() {
         Promise.all([
-            fetch('http://' + window.location.hostname + ':8003/comment_table')
+            fetch('http://infosys3.f4.htw-berlin.de:8003/comment_table')
         ])
             .then(([res]) => Promise.all([res.json()]))
             .then(([data]) => this.setState({
@@ -22,28 +22,28 @@ class CommentTable extends React.Component {
     }
 
     render() {
+        var columns = [
+            { field: 'sender', headerName: 'Absender', flex: 1 },
+            { field: 'receiver', headerName: 'Empfänger', flex: 1 },
+            { field: 'comment', headerName: 'Kommentar', flex: 1 },
+            { field: 'polarity', headerName: 'Polarität', flex: .5 },
+        ]
+
+        var rows = []
+
+        this.state.data.forEach(function (dict, i) {
+            dict.id = i
+            rows.push(dict)
+        })
+
         return (
-            <>
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            <div style={{ height: 500, width: '100%' }}>
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    loading={this.state.isLoading}
                 />
-                <MaterialTable
-                    columns={[
-                        { title: 'Absender', field: 'sender' },
-                        { title: 'Empfänger', field: 'receiver' },
-                        { title: 'Kommentar', field: 'comment' },
-                        { title: 'Polarität', field: 'polarity', customSort: (a, b) => a.polarity - b.polarity },
-                    ]}
-                    data={this.state.data}
-                    isLoading={this.state.isLoading}
-                    options={{
-                        showTitle: false,
-                        searchFieldAlignment: 'left',
-                        thirdSortClick: false
-                    }}>
-                </MaterialTable>
-            </>
+            </div>
         )
     }
 }

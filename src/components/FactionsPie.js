@@ -13,7 +13,7 @@ class FactionsPie extends React.Component {
 
     componentDidMount() {
         Promise.all([
-            fetch('http://' + window.location.hostname + ':8003/factions')
+            fetch('http://infosys3.f4.htw-berlin.de:8003/factions')
         ])
             .then(([res]) => Promise.all([res.json()]))
             .then(([data]) => this.setState({

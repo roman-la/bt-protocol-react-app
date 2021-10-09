@@ -1,18 +1,20 @@
 import React from 'react';
-import MaterialTable from 'material-table'
+import { DataGrid } from '@mui/x-data-grid';
+import Paper from '@mui/material/Paper';
 
 class PageRankTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
-            isLoading: true
+            isLoading: true,
+
         }
     }
 
     componentDidMount() {
         Promise.all([
-            fetch('http://' + window.location.hostname + ':8003/pagerank_table')
+            fetch('http://infosys3.f4.htw-berlin.de:8003/pagerank_table')
         ])
             .then(([res]) => Promise.all([res.json()]))
             .then(([data]) => this.setState({
@@ -22,29 +24,31 @@ class PageRankTable extends React.Component {
     }
 
     render() {
+        var columns = [
+            { field: 'name', headerName: 'MdB', flex: 1 },
+            { field: 'faction', headerName: 'Fraktion', flex: .5 },
+            { field: 'pagerank', headerName: 'PageRank', flex: 1 },
+            { field: 'eigenvector', headerName: 'Eigenvektor', flex: 1 },
+            { field: 'comments', headerName: 'Kommentare', flex: 1 }
+        ]
+
+        var rows = []
+
+        this.state.data.forEach(function (dict, i) {
+            dict.id = i
+            rows.push(dict)
+        })
+
         return (
-            <>
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-                />
-                <MaterialTable
-                    columns={[
-                        { title: 'Mdb', field: 'name' },
-                        { title: 'Fraktion', field: 'faction' },
-                        { title: 'PageRank', field: 'pagerank'},
-                        { title: 'Eigenvektor', field: 'eigenvector', defaultSort: 'desc' },
-                        { title: 'Kommentare', field: 'comments' }
-                    ]}
-                    data={this.state.data}
-                    isLoading={this.state.isLoading}
-                    options={{
-                        showTitle: false,
-                        searchFieldAlignment: 'left',
-                        thirdSortClick: false
-                    }}>
-                </MaterialTable>
-            </>
+            <Paper elevation={5}>
+                <div style={{ height: 475, width: '100%' }}>
+                    <DataGrid
+                        rows={rows}
+                        columns={columns}
+                        loading={this.state.isLoading}
+                    />
+                </div>
+            </Paper>
         )
     }
 }

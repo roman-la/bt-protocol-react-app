@@ -1,5 +1,6 @@
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie'
+import LinearProgress from '@mui/material/LinearProgress';
 
 class FactionsPie extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class FactionsPie extends React.Component {
 
     componentDidMount() {
         Promise.all([
-            fetch('http://' + window.location.hostname + ':8003/factions')
+            fetch('http://infosys3.f4.htw-berlin.de:8003/factions')
         ])
             .then(([res]) => Promise.all([res.json()]))
             .then(([data]) => this.setState({
@@ -40,12 +41,14 @@ class FactionsPie extends React.Component {
 
     render() {
         if (!this.state.isLoaded) {
-            return <div>Loading...</div>
+            return <div style={{ margin: 20 }}>
+                <LinearProgress />
+            </div>
         } else {
-            return <div style={{ height: '17em'}}>
+            return <div style={{ height: '18em' }}>
                 <ResponsivePie
                     data={this.state.data}
-                    margin={{ top: 20, right: 0, bottom: 20, left: 0 }}
+                    margin={{ top: 20, right: 0, bottom: 0, left: 0 }}
                     startAngle={105}
                     endAngle={-105}
                     innerRadius={0.5}

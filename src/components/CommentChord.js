@@ -1,5 +1,8 @@
 import React from 'react';
 import { ResponsiveChord } from '@nivo/chord'
+import { TableTooltip, Chip } from '@nivo/tooltip'
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
 
 class CommentChord extends React.Component {
     constructor(props) {
@@ -30,9 +33,11 @@ class CommentChord extends React.Component {
 
     render() {
         if (!this.state.isLoaded) {
-            return <div>Loading...</div>
+            return <div style={{ margin: 20 }}>
+                <LinearProgress />
+            </div>
         } else {
-            return <div style={{ height: '27em' }}>
+            return <div style={{ height: '28em' }}>
                 <ResponsiveChord
                     matrix={this.state.matrix}
                     keys={this.state.factions.map((f) => f.name)}
@@ -61,6 +66,40 @@ class CommentChord extends React.Component {
                     animate={true}
                     motionStiffness={90}
                     motionDamping={7}
+                    arcTooltip={({ arc }) => (
+                        <TableTooltip
+                            rows={[
+                                [
+                                    <Typography>Kommentare von</Typography>,
+                                    <Chip key="chip" color={arc.color} />,
+                                    <Typography>{arc.label}</Typography>,
+                                    <Typography>{arc.formattedValue}</Typography>
+                                ]
+                            ]}
+                        />
+                    )}
+                    ribbonTooltip={({ ribbon }) => (
+                        <TableTooltip
+                            rows={[
+                                [
+                                    <Chip key="chip" color={ribbon.source.color} />,
+                                    <Typography>{ribbon.source.id}</Typography>,
+                                    <Typography>zu</Typography>,
+                                    <Chip key="chip" color={ribbon.target.color} />,
+                                    <Typography>{ribbon.target.id}</Typography>,
+                                    <Typography>{ribbon.source.value}</Typography>,
+                                ],
+                                [
+                                    <Chip key="chip" color={ribbon.target.color} />,
+                                    <Typography>{ribbon.target.id}</Typography>,
+                                    <Typography>zu</Typography>,
+                                    <Chip key="chip" color={ribbon.source.color} />,
+                                    <Typography>{ribbon.source.id}</Typography>,
+                                    <Typography>{ribbon.target.value}</Typography>,
+                                ],
+                            ]}
+                        />
+                    )}
                 />
             </div>
         }

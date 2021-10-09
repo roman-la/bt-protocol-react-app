@@ -1,5 +1,7 @@
 import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import Paper from '@mui/material/Paper';
+
 
 class CommentTable extends React.Component {
     constructor(props) {
@@ -37,13 +39,15 @@ class CommentTable extends React.Component {
         })
 
         return (
-            <div style={{ height: 500, width: '100%' }}>
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    loading={this.state.isLoading}
-                />
-            </div>
+            <Paper elevation={5}>
+                <div style={{ height: 475, width: '100%' }}>
+                    <DataGrid
+                        rows={rows}
+                        columns={columns}
+                        loading={this.state.isLoading}
+                    />
+                </div>
+            </Paper>
         )
     }
 }

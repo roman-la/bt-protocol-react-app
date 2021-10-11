@@ -1,6 +1,8 @@
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie'
 import LinearProgress from '@mui/material/LinearProgress';
+import { TableTooltip, Chip } from '@nivo/tooltip'
+import Typography from '@mui/material/Typography';
 
 class FactionsPie extends React.Component {
     constructor(props) {
@@ -45,7 +47,7 @@ class FactionsPie extends React.Component {
                 <LinearProgress />
             </div>
         } else {
-            return <div style={{ height: '18em' }}>
+            return <div style={{ height: '17em' }}>
                 <ResponsivePie
                     data={this.state.data}
                     margin={{ top: 20, right: 0, bottom: 0, left: 0 }}
@@ -64,6 +66,16 @@ class FactionsPie extends React.Component {
                     arcLinkLabelsColor={{ from: 'color' }}
                     arcLabelsSkipAngle={10}
                     arcLabelsTextColor="white"
+                    tooltip={({ datum: { id, value, color } }) => (
+                        <TableTooltip
+                            rows={[
+                                [
+                                    <Chip key="chip" color={color} />,
+                                    <Typography>{id} {value} Sitze</Typography>
+                                ]
+                            ]}
+                        />
+                    )}
                 />
             </div>
         }

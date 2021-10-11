@@ -16,8 +16,8 @@ const styles = makeStyles({
     }
 });
 
-const HeaderTooltip = ({ header, tooltip }) =>
-    <Grid container direction="row" alignItems="center" spacing={1}>
+const HeadingTooltip = ({ header, tooltip }) =>
+    <Grid container direction="row" alignItems="center" spacing={1} sx={{ marginBottom: '10px' }}>
         <Grid item>
             <Typography variant='h5'>{header}</Typography>
         </Grid>
@@ -28,4 +28,4 @@ const HeaderTooltip = ({ header, tooltip }) =>
         </Grid>
     </Grid>;
 
-export default HeaderTooltip;
+export default HeadingTooltip;

@@ -1,24 +1,30 @@
 import React from 'react';
 import { ResponsiveHeatMap } from '@nivo/heatmap'
 import LinearProgress from '@mui/material/LinearProgress';
+import { Chip } from '@nivo/tooltip'
 import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
 
 class PolarityHeatmap extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             isLoaded: false,
-            data: []
+            data: [],
+            factions: []
         }
     }
 
     componentDidMount() {
-        Promise.all([fetch('http://infosys3.f4.htw-berlin.de:8003/polarity_heatmap')])
-            .then(([res]) => Promise.all([res.json()]))
-            .then(([data]) => {
+        Promise.all([
+            fetch('http://infosys3.f4.htw-berlin.de:8003/factions'),
+            fetch('http://infosys3.f4.htw-berlin.de:8003/polarity_heatmap')
+        ])
+            .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+            .then(([data1, data2]) => {
                 var mappedData = []
 
-                data.forEach((element) => {
+                data2.forEach((element) => {
                     Object.keys(element).forEach((key) => {
                         if (key === 'id') return;
 
@@ -40,7 +46,8 @@ class PolarityHeatmap extends React.Component {
                 })
 
                 this.setState({
-                    data: mappedData
+                    data: mappedData,
+                    factions: data1
                 })
             })
             .then(() => {
@@ -90,8 +97,18 @@ class PolarityHeatmap extends React.Component {
                         labelTextColor={'black'}
                         tooltip={({ xKey, yKey, value, color }) => {
                             if (xKey != yKey)
-                                return <Typography>{xKey} zu {yKey} {value.toFixed(6)}</Typography>
-                            return '-'
+                                return <Stack direction="row" alignItems="center" spacing={1}>
+                                    <Chip key="chip" color={this.state.factions.find(x => x.name === xKey).color} />
+                                    <Typography>{xKey}</Typography>
+                                    <Typography>zu</Typography>
+                                    <Chip key="chip" color={this.state.factions.find(x => x.name === yKey).color} />
+                                    <Typography>{yKey}</Typography>
+                                    <Chip key="chip" color={color} />
+                                    <Typography>{value.toFixed(6)}</Typography>
+                                </Stack>
+
+                            else
+                                return '-'
                         }}
                         colors={scale}
                     />

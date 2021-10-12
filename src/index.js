@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import HeadingTooltip from './components/HeadingTooltip';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <>

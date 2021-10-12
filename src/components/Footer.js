@@ -37,13 +37,13 @@ const Footer = () =>
                     <Link variant="caption" underline="hover" color="inherit" href="https://scrapy.org/">Scrapy</Link>
                     <Link variant="caption" underline="hover" color="inherit" href="https://spacy.io/">spaCy</Link>
                     <Link variant="caption" underline="hover" color="inherit" href="https://neo4j.com/">Neo4j</Link>
-                    <Link variant="caption" underline="hover" color="inherit" href="https://github.com/Pylons/waitress">Waitress</Link>
+                    <Link variant="caption" underline="hover" color="inherit" href="https://flask.palletsprojects.com/">Flask</Link>
                 </Stack>
                 <Stack>
                     <Typography variant="overline"><WebOutlinedIcon style={{ position: 'relative', top: '8px' }} /> Frontend</Typography>
-                    <Link variant="caption" underline="hover" color="inherit" href="https://flask.palletsprojects.com/">Flask</Link>
                     <Link variant="caption" underline="hover" color="inherit" href="https://reactjs.org/">React</Link>
                     <Link variant="caption" underline="hover" color="inherit" href="https://mui.com/">Material UI</Link>
+                    <Link variant="caption" underline="hover" color="inherit" href="https://ant.design/">Ant Design</Link>
                     <Link variant="caption" underline="hover" color="inherit" href="https://nivo.rocks/">Nivo</Link>
                 </Stack>
             </Stack>

@@ -89,33 +89,33 @@ class PageRankTable extends React.Component {
                 key: 'name',
                 dataIndex: 'name',
                 title: 'MdB',
-                sorter: (a, b) => a.sender.localeCompare(b.sender),
+                sorter: (a, b) => a.sender.localeCompare(b.name),
                 ...this.getColumnSearchProps('sender')
             },
             {
                 key: 'faction',
                 dataIndex: 'faction',
                 title: 'Fraktion',
-                sorter: (a, b) => a.sender.localeCompare(b.sender),
+                sorter: (a, b) => a.sender.localeCompare(b.faction),
                 ...this.getColumnSearchProps('sender')
             },
             {
                 key: 'pagerank',
                 dataIndex: 'pagerank',
                 title: 'PageRank',
-                sorter: (a, b) => a.polarity - b.polarity
+                sorter: (a, b) => a.pagerank - b.pagerank
             },
             {
                 key: 'eigenvector',
                 dataIndex: 'eigenvector',
                 title: 'Eigenvektor',
-                sorter: (a, b) => a.polarity - b.polarity
+                sorter: (a, b) => a.eigenvector - b.eigenvector
             },
             {
                 key: 'comments',
                 dataIndex: 'comments',
                 title: 'Kommentare',
-                sorter: (a, b) => a.polarity - b.polarity
+                sorter: (a, b) => a.comments - b.comments
             }
         ]
 

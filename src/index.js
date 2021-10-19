@@ -8,9 +8,9 @@ import { FactionsPie } from './components/FactionsPie';
 import { CommentTable } from './components/CommentTable';
 import { PageRankTable } from './components/PageRankTable';
 import { PolarityHeatmap } from './components/PolarityHeatmap';
-import HeadingTooltip from './components/HeadingTooltip';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import { HeadingTooltip } from './components/HeadingTooltip';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
 
 ReactDOM.render(
   <>

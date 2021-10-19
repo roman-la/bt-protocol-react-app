@@ -4,34 +4,13 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { Chip } from '@nivo/tooltip'
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import { useFetch } from './APIUtils'
+import { useFetch } from '../hooks/useFetch'
 
-export function PolarityHeatmap() {
+export function PolarityHeatmap(props) {
     const [factions, isLoadingFactions] = useFetch('/factions')
     const [data, isLoadingData] = useFetch('/polarity_heatmap')
 
-    // TODO: Add to rest api
-    var mappedData = []
-    data.forEach((element) => {
-        Object.keys(element).forEach((key) => {
-            if (key === 'id') return;
-
-            var hue = 0;
-            var lightness = 100;
-            if (element[key] > 0) {
-                hue = 125;
-                lightness = 50 * (2 - element[key]);
-            } else if (element[key] < 0) {
-                hue = 0;
-                lightness = (50 * (2 - Math.abs(element[key])));
-            }
-
-            element[key + 'Color'] = `hsl(${hue}, 50%, ${lightness}%)`
-        })
-        mappedData.push(element)
-    })
-
-    if (isLoadingData || isLoadingFactions || data.length === 0) {
+    if (isLoadingData || isLoadingFactions) {
         return <div style={{ margin: 20 }}>
             <LinearProgress />
         </div>
@@ -53,7 +32,7 @@ export function PolarityHeatmap() {
             <div style={{ height: '30em' }}>
                 <ResponsiveHeatMap
                     data={data}
-                    keys={data.map(e => e.id)}
+                    keys={keys}
                     margin={{ top: 60, right: 1, bottom: 1, left: 1 }}
                     forceSquare={true}
                     cellOpacity={1}
@@ -71,15 +50,14 @@ export function PolarityHeatmap() {
                     tooltip={({ xKey, yKey, value, color }) => {
                         if (xKey !== yKey)
                             return <Stack direction="row" alignItems="center" spacing={1}>
-                                <Chip key="chip" color={factions.find(x => x.name === xKey).color} />
+                                <Chip color={factions.find(x => x.name === xKey).color} />
                                 <Typography>{xKey}</Typography>
                                 <Typography>zu</Typography>
-                                <Chip key="chip" color={factions.find(x => x.name === yKey).color} />
+                                <Chip color={factions.find(x => x.name === yKey).color} />
                                 <Typography>{yKey}</Typography>
-                                <Chip key="chip" color={color} />
+                                <Chip color={color} />
                                 <Typography>{value.toFixed(6)}</Typography>
                             </Stack>
-
                         else
                             return '-'
                     }}

@@ -1,28 +1,22 @@
 import React from 'react';
 import { Table } from 'antd';
-import { useFetch } from './APIUtils'
+import { useFetch } from '../hooks/useFetch'
 
 export function CommentTable() {
-    const [data, isLoading] = useFetch('/comment_table')
-
-    // TODO: Add to rest api
-    data.forEach(function (element, i) {
-        element.key = i
-        element.polarity = element.polarity.toFixed(6)
-    })
+    const [data, isLoading] = useFetch('/comment_table')   
 
     const columns = [
         {
             key: 'sender',
             dataIndex: 'sender',
             title: 'Absender',
-            sorter: (a, b) => a.sender.localeCompare(b.sender),
+            sorter: (a, b) => a.sender.localeCompare(b.sender)
         },
         {
             key: 'receiver',
             dataIndex: 'receiver',
             title: 'Empfänger',
-            sorter: (a, b) => a.receiver.localeCompare(b.receiver),
+            sorter: (a, b) => a.receiver.localeCompare(b.receiver)
         },
         {
             key: 'comment',

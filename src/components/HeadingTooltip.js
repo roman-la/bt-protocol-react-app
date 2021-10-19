@@ -16,16 +16,16 @@ const styles = makeStyles({
     }
 });
 
-const HeadingTooltip = ({ header, tooltip }) =>
-    <Grid container direction="row" alignItems="center" spacing={1} sx={{ marginBottom: '10px' }}>
-        <Grid item>
-            <Typography variant='h5'>{header}</Typography>
-        </Grid>
-        <Grid item>
-            <Tooltip title={tooltip} classes={{ tooltip: styles().tooltip }}>
-                <InfoOutlinedIcon />
-            </Tooltip>
-        </Grid>
-    </Grid>;
-
-export default HeadingTooltip;
+export function HeadingTooltip(props) {
+    return (
+        <Grid container direction="row" alignItems="center" spacing={1} sx={{ marginBottom: '10px' }}>
+            <Grid item>
+                <Typography variant='h5'>{props.header}</Typography>
+            </Grid>
+            <Grid item>
+                <Tooltip title={props.tooltip} classes={{ tooltip: styles().tooltip }}>
+                    <InfoOutlinedIcon />
+                </Tooltip>
+            </Grid>
+        </Grid>)
+}

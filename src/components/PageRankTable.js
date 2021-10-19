@@ -1,14 +1,9 @@
 import React from 'react';
 import { Table } from 'antd';
-import { useFetch } from './APIUtils'
+import { useFetch } from '../hooks/useFetch'
 
 export function PageRankTable() {
     const [data, isLoading] = useFetch('/pagerank_table')
-
-    // TODO: Add to rest api
-    data.forEach((element, i) => {
-        element.key = i
-    })
 
     const columns = [
         {

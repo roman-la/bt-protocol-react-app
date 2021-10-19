@@ -3,7 +3,7 @@ import { ResponsiveChord } from '@nivo/chord'
 import { TableTooltip, Chip } from '@nivo/tooltip'
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
-import { useFetch } from './APIUtils'
+import { useFetch } from '../hooks/useFetch'
 
 export function CommentChord() {
     const [factions, isLoadingFactions] = useFetch('/factions')
@@ -48,7 +48,7 @@ export function CommentChord() {
                         rows={[
                             [
                                 <Typography>Kommentare von</Typography>,
-                                <Chip key="chip" color={arc.color} />,
+                                <Chip color={arc.color} />,
                                 <Typography>{arc.label}</Typography>,
                                 <Typography>{arc.formattedValue}</Typography>
                             ]
@@ -59,18 +59,18 @@ export function CommentChord() {
                     <TableTooltip
                         rows={[
                             [
-                                <Chip key="chip" color={ribbon.source.color} />,
+                                <Chip color={ribbon.source.color} />,
                                 <Typography>{ribbon.source.id}</Typography>,
                                 <Typography>zu</Typography>,
-                                <Chip key="chip" color={ribbon.target.color} />,
+                                <Chip color={ribbon.target.color} />,
                                 <Typography>{ribbon.target.id}</Typography>,
                                 <Typography>{ribbon.source.value}</Typography>,
                             ],
                             [
-                                <Chip key="chip" color={ribbon.target.color} />,
+                                <Chip color={ribbon.target.color} />,
                                 <Typography>{ribbon.target.id}</Typography>,
                                 <Typography>zu</Typography>,
-                                <Chip key="chip" color={ribbon.source.color} />,
+                                <Chip color={ribbon.source.color} />,
                                 <Typography>{ribbon.source.id}</Typography>,
                                 <Typography>{ribbon.target.value}</Typography>,
                             ],

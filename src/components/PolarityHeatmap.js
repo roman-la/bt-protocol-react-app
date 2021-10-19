@@ -28,15 +28,14 @@ class PolarityHeatmap extends React.Component {
                     Object.keys(element).forEach((key) => {
                         if (key === 'id') return;
 
+                        var hue = 0;
+                        var lightness = 100;
                         if (element[key] > 0) {
-                            var hue = 125;
-                            var lightness = 50 * (2 - element[key]);
+                            hue = 125;
+                            lightness = 50 * (2 - element[key]);
                         } else if (element[key] < 0) {
-                            var hue = 0;
-                            var lightness = (50 * (2 - Math.abs(element[key])));
-                        } else {
-                            var hue = 0;
-                            var lightness = 100;
+                            hue = 0;
+                            lightness = (50 * (2 - Math.abs(element[key])));
                         }
 
                         element[key + 'Color'] = `hsl(${hue}, 50%, ${lightness}%)`
@@ -96,7 +95,7 @@ class PolarityHeatmap extends React.Component {
                         padding={2}
                         labelTextColor={'black'}
                         tooltip={({ xKey, yKey, value, color }) => {
-                            if (xKey != yKey)
+                            if (xKey !== yKey)
                                 return <Stack direction="row" alignItems="center" spacing={1}>
                                     <Chip key="chip" color={this.state.factions.find(x => x.name === xKey).color} />
                                     <Typography>{xKey}</Typography>

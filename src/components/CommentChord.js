@@ -5,7 +5,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import { useFetch } from './APIUtils'
 
-const CommentChord = () => {
+export function CommentChord() {
     const [factions, isLoadingFactions] = useFetch('/factions')
     const [matrix, isLoadingMatrix] = useFetch('/comments_chord')
 
@@ -81,5 +81,3 @@ const CommentChord = () => {
         </div>
     }
 }
-
-export default CommentChord;

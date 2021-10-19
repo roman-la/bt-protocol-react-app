@@ -1,10 +1,11 @@
 import React from 'react';
-import { Table, } from 'antd';
+import { Table } from 'antd';
 import { useFetch } from './APIUtils'
 
-const CommentTable = () => {
+export function CommentTable() {
     const [data, isLoading] = useFetch('/comment_table')
 
+    // TODO: Add to rest api
     data.forEach(function (element, i) {
         element.key = i
         element.polarity = element.polarity.toFixed(6)
@@ -41,5 +42,3 @@ const CommentTable = () => {
         <Table columns={columns} dataSource={data} loading={isLoading} />
     )
 }
-
-export default CommentTable

@@ -5,7 +5,7 @@ import { TableTooltip, Chip } from '@nivo/tooltip'
 import Typography from '@mui/material/Typography';
 import { useFetch } from './APIUtils'
 
-const FactionsPie = () => {
+export function FactionsPie() {
     const [data, isLoading] = useFetch('/factions')
 
     // TODO: Add to rest api
@@ -58,5 +58,3 @@ const FactionsPie = () => {
         </div>
     }
 }
-
-export default FactionsPie;

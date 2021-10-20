@@ -44,7 +44,7 @@ export function Footer() {
                         <Typography variant="overline"><WebOutlinedIcon style={{ position: 'relative', top: '8px' }} /> Frontend</Typography>
                         <Link variant="caption" underline="hover" color="inherit" href="https://reactjs.org/">React</Link>
                         <Link variant="caption" underline="hover" color="inherit" href="https://mui.com/">Material UI</Link>
-                        <Link variant="caption" underline="hover" color="inherit" href="https://ant.design/">Ant Design</Link>
+                        <Link variant="caption" underline="hover" color="inherit" href="https://react-table.tanstack.com/">React Table</Link>
                         <Link variant="caption" underline="hover" color="inherit" href="https://nivo.rocks/">Nivo</Link>
                     </Stack>
                 </Stack>

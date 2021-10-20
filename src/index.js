@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Divider from '@mui/material/Divider';
 import Container from '@mui/material/Container';
-import 'antd/dist/antd.css';
 import { CommentChord } from './components/CommentChord';
 import { FactionsPie } from './components/FactionsPie';
 import { CommentTable } from './components/CommentTable';

@@ -1,38 +1,39 @@
 import React from 'react';
-import { Table } from 'antd';
 import { useFetch } from '../hooks/useFetch'
+import { CustomTable } from './CustomTable.js'
+import LinearProgress from '@mui/material/LinearProgress';
 
 export function CommentTable() {
-    const [data, isLoading] = useFetch('/comment_table')   
+    const [data, isLoading] = useFetch('/comment_table')
 
-    const columns = [
-        {
-            key: 'sender',
-            dataIndex: 'sender',
-            title: 'Absender',
-            sorter: (a, b) => a.sender.localeCompare(b.sender)
-        },
-        {
-            key: 'receiver',
-            dataIndex: 'receiver',
-            title: 'Empfänger',
-            sorter: (a, b) => a.receiver.localeCompare(b.receiver)
-        },
-        {
-            key: 'comment',
-            dataIndex: 'comment',
-            title: 'Kommentar',
-            sorter: (a, b) => a.comment.localeCompare(b.comment),
-        },
-        {
-            key: 'polarity',
-            dataIndex: 'polarity',
-            title: 'Polarität',
-            sorter: (a, b) => a.polarity - b.polarity
-        },
-    ]
-
-    return (
-        <Table columns={columns} dataSource={data} loading={isLoading} />
+    const columns = React.useMemo(
+        () => [
+            {
+                Header: 'Absender',
+                accessor: 'sender'
+            },
+            {
+                Header: 'Empfänger',
+                accessor: 'receiver'
+            },
+            {
+                Header: 'Kommentar',
+                accessor: 'comment'
+            },
+            {
+                Header: 'Polarität',
+                accessor: 'polarity',
+                disableFilters: true
+            }
+        ],
+        []
     )
+
+    if (isLoading) {
+        return <div style={{ margin: 20 }}>
+            <LinearProgress />
+        </div>
+    } else {
+        return (<CustomTable columns={columns} data={data} />)
+    }
 }

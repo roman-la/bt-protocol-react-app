@@ -7,8 +7,10 @@ export function useFetch(url) {
     useEffect(() => {
         fetch(process.env.REACT_APP_REST_API + url)
             .then(response => response.json())
-            .then(data => setData(data))
-            .then(setIsLoading(false))
+            .then(data => {
+                setData(data)
+                setIsLoading(false)
+            })
     }, [url]);
 
     return [data, isLoading];

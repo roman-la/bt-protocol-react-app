@@ -8,7 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Collapse from '@mui/material/Collapse';
 import Link from '@mui/material/Link';
 
-const Header = () => {
+export function Header() {
     const [checked, setChecked] = React.useState(false);
 
     const handleChange = () => {
@@ -26,7 +26,7 @@ const Header = () => {
                     <Stack direction="row"
                         justifyContent="space-between"
                         alignItems="center">
-                        <Typography variant='h5' style={{color: '#FFFFFF'}}>Analyse der Sitzungsprotokolle des 19. Deutschen Bundestages<sup style={{ color: '#888888' }}>beta</sup></Typography>
+                        <Typography variant='h5' style={{ color: '#FFFFFF' }}>Analyse der Sitzungsprotokolle des 19. Deutschen Bundestages<sup style={{ color: '#888888' }}>beta</sup></Typography>
                         <FormControlLabel
                             control={<Switch checked={checked} onChange={handleChange} />}
                             label="About"
@@ -60,5 +60,3 @@ const Header = () => {
         </>
     );
 }
-
-export default Header;

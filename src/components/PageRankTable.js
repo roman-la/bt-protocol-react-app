@@ -19,17 +19,20 @@ export function PageRankTable() {
             {
                 Header: 'PageRank',
                 accessor: 'pagerank',
-                disableFilters: true
+                disableFilters: true,
+                sortType: 'basic'
             },
             {
                 Header: 'Eigenvektor',
                 accessor: 'eigenvector',
-                disableFilters: true
+                disableFilters: true,
+                sortType: 'basic'
             },
             {
                 Header: 'Kommentare',
                 accessor: 'comments',
-                disableFilters: true
+                disableFilters: true,
+                sortType: 'basic'
             },
         ],
         []

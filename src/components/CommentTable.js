@@ -23,7 +23,8 @@ export function CommentTable() {
             {
                 Header: 'Polarität',
                 accessor: 'polarity',
-                disableFilters: true
+                disableFilters: true,
+                sortType: 'basic'
             }
         ],
         []

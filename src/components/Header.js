@@ -1,19 +1,19 @@
-import React from 'react';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Switch from '@mui/material/Switch';
-import Stack from '@mui/material/Stack';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Collapse from '@mui/material/Collapse';
-import Link from '@mui/material/Link';
+import React from 'react'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Switch from '@mui/material/Switch'
+import Stack from '@mui/material/Stack'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Collapse from '@mui/material/Collapse'
+import Link from '@mui/material/Link'
 
 export function Header() {
-    const [checked, setChecked] = React.useState(false);
+    const [checked, setChecked] = React.useState(false)
 
     const handleChange = () => {
-        setChecked((prev) => !prev);
-    };
+        setChecked((prev) => !prev)
+    }
 
     return (
         <>
@@ -58,5 +58,5 @@ export function Header() {
                 </Container>
             </Box>
         </>
-    );
+    )
 }

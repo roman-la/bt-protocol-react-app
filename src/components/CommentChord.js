@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { ResponsiveChord } from '@nivo/chord'
 import { TableTooltip, Chip } from '@nivo/tooltip'
-import LinearProgress from '@mui/material/LinearProgress';
-import Typography from '@mui/material/Typography';
+import LinearProgress from '@mui/material/LinearProgress'
+import Typography from '@mui/material/Typography'
 import { useFetch } from '../hooks/useFetch'
 
 export function CommentChord() {
@@ -43,7 +43,7 @@ export function CommentChord() {
                 animate={true}
                 motionStiffness={90}
                 motionDamping={7}
-                arcTooltip={({ arc }) => (
+                arcTooltip={({ arc }) =>
                     <TableTooltip
                         rows={[
                             [
@@ -54,8 +54,8 @@ export function CommentChord() {
                             ]
                         ]}
                     />
-                )}
-                ribbonTooltip={({ ribbon }) => (
+                }
+                ribbonTooltip={({ ribbon }) =>
                     <TableTooltip
                         rows={[
                             [
@@ -64,7 +64,7 @@ export function CommentChord() {
                                 <Typography>zu</Typography>,
                                 <Chip color={ribbon.target.color} />,
                                 <Typography>{ribbon.target.id}</Typography>,
-                                <Typography>{ribbon.source.value}</Typography>,
+                                <Typography>{ribbon.source.value}</Typography>
                             ],
                             [
                                 <Chip color={ribbon.target.color} />,
@@ -72,11 +72,11 @@ export function CommentChord() {
                                 <Typography>zu</Typography>,
                                 <Chip color={ribbon.source.color} />,
                                 <Typography>{ribbon.source.id}</Typography>,
-                                <Typography>{ribbon.target.value}</Typography>,
+                                <Typography>{ribbon.target.value}</Typography>
                             ],
                         ]}
                     />
-                )}
+                }
             />
         </div>
     }

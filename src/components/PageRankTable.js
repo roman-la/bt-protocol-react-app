@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { CustomTable } from './CustomTable.js'
-import LinearProgress from '@mui/material/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress'
 
 export function PageRankTable() {
     const [data, isLoading] = useFetch('/pagerank_table')
@@ -42,6 +42,6 @@ export function PageRankTable() {
             <LinearProgress />
         </div>
     } else {
-        return (<CustomTable columns={columns} data={data} />)
+        return <CustomTable columns={columns} data={data} />
     }
 }

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
-import LinearProgress from '@mui/material/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress'
 import { TableTooltip, Chip } from '@nivo/tooltip'
-import Typography from '@mui/material/Typography';
+import Typography from '@mui/material/Typography'
 import { useFetch } from '../hooks/useFetch'
 
 export function FactionsPie() {
@@ -35,7 +35,7 @@ export function FactionsPie() {
                 arcLinkLabel="id"
                 id="name"
                 value="size"
-                tooltip={({ datum: { id, value, color } }) => (
+                tooltip={({ datum: { id, value, color } }) =>
                     <TableTooltip
                         rows={[
                             [
@@ -44,7 +44,7 @@ export function FactionsPie() {
                             ]
                         ]}
                     />
-                )}
+                }
             />
         </div>
     }

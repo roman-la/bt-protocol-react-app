@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 export function useFetch(url) {
-    const [isLoading, setIsLoading] = useState(true);
-    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
+    const [data, setData] = useState([])
 
     useEffect(() => {
         fetch(process.env.REACT_APP_REST_API + url)
@@ -11,7 +11,7 @@ export function useFetch(url) {
                 setData(data)
                 setIsLoading(false)
             })
-    }, [url]);
+    }, [url])
 
-    return [data, isLoading];
+    return [data, isLoading]
 }

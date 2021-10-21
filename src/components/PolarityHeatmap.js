@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import { ResponsiveHeatMap } from '@nivo/heatmap'
-import LinearProgress from '@mui/material/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress'
 import { Chip } from '@nivo/tooltip'
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography'
+import Stack from '@mui/material/Stack'
 import { useFetch } from '../hooks/useFetch'
 
-export function PolarityHeatmap(props) {
+export function PolarityHeatmap() {
     const [factions, isLoadingFactions] = useFetch('/factions')
     const [data, isLoadingData] = useFetch('/polarity_heatmap')
 
@@ -16,7 +16,6 @@ export function PolarityHeatmap(props) {
         </div>
     } else {
         const keys = data.map(e => e.id)
-
         const colors = data.map((item) => keys.map((key) => item[`${key}Color`])).flat()
 
         // See https://github.com/plouc/nivo/issues/1381

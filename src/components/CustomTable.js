@@ -4,16 +4,16 @@ import MaUTable from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
+import Container from '@material-ui/core/Container'
 import TableRow from '@material-ui/core/TableRow'
 import TablePagination from '@mui/material/TablePagination'
-import { Container } from '@material-ui/core'
 import Grid from '@mui/material/Grid'
 import IconButton from '@mui/material/IconButton'
+import TableSortLabel from '@mui/material/TableSortLabel'
 import TextField from '@mui/material/TextField'
 import Popover from '@mui/material/Popover'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
-import { TableSortLabel } from '@material-ui/core'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 export function CustomTable(props) {
     const {
@@ -46,15 +46,17 @@ export function CustomTable(props) {
                                 <TableCell key={column.id}>
                                     <Grid container
                                         direction="row"
+                                        justifyContent="space-between"
                                         alignItems="center">
-                                        <Grid item xs={8}>
+                                        <Grid item xs={10}>
                                             <div {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')}</div>
                                         </Grid>
-                                        <Grid item xs={4}>
+                                        <Grid item xs>
                                             <Grid container
                                                 direction="row"
                                                 justifyContent="flex-end"
-                                                alignItems="center">
+                                                alignItems="center"
+                                                spacing={1}>
                                                 <Grid item xs={column.canSort ? 6 : 0}>
                                                     <TableSortLabel
                                                         hideSortIcon={column.canSort}
@@ -111,18 +113,15 @@ const DefaultFilter = ({ column: { filterValue, setFilter } }) => {
         <>
             <IconButton onClick={handleClick}>
                 {filterValue
-                    ? <FilterAltIcon sx={{ fontSize: 15 }} color='primary' />
-                    : <FilterAltIcon sx={{ fontSize: 15 }} />}
+                    ? <FilterAltIcon sx={{ fontSize: 15, color: 'royalblue' }} />
+                    : <FilterAltIcon sx={{ fontSize: 15, color: 'gray' }} />}
             </IconButton>
             <Popover
                 id={id}
                 open={open}
                 anchorEl={anchorEl}
                 onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right'
-                }}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             >
                 <TextField
                     value={filterValue || ''}

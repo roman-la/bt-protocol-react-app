@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Divider from '@mui/material/Divider';
-import Container from '@mui/material/Container';
-import { CommentChord } from './components/CommentChord';
-import { FactionsPie } from './components/FactionsPie';
-import { CommentTable } from './components/CommentTable';
-import { PageRankTable } from './components/PageRankTable';
-import { PolarityHeatmap } from './components/PolarityHeatmap';
-import { HeadingTooltip } from './components/HeadingTooltip';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Divider from '@mui/material/Divider'
+import Container from '@mui/material/Container'
+import { CommentChord } from './components/CommentChord'
+import { FactionsPie } from './components/FactionsPie'
+import { CommentTable } from './components/CommentTable'
+import { PageRankTable } from './components/PageRankTable'
+import { PolarityHeatmap } from './components/PolarityHeatmap'
+import { HeadingTooltip } from './components/HeadingTooltip'
+import { Footer } from './components/Footer'
+import { Header } from './components/Header'
 
 ReactDOM.render(
   <>
@@ -51,4 +51,4 @@ ReactDOM.render(
     <Footer />
   </>,
   document.getElementById('root')
-);
+)

@@ -10,6 +10,7 @@ import { PolarityHeatmap } from './components/PolarityHeatmap'
 import { HeadingTooltip } from './components/HeadingTooltip'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
+import { PolarityBar } from './components/PolarityBar'
 
 ReactDOM.render(
   <>
@@ -32,6 +33,13 @@ ReactDOM.render(
     <Container>
       <HeadingTooltip header={'Durchschnittliche Kommentar-Polarität'} tooltip={'Diese Heatmap zeigt die durchschnittliche Kommentar-Polarität zwischen Fraktionen.'} />
       <PolarityHeatmap />
+    </Container>
+
+    <Divider variant='middle' sx={{ marginTop: '25px', marginBottom: '25px' }} />
+
+    <Container>
+      <HeadingTooltip header={'Sympathien und Antipathien'} tooltip={'Diese Balkendiagramme zeigen die höchsten und niedrigsten Summen der Polaritäten, die der ausgewählte MdB von anderen MdB erhalten hat.'} />
+      <PolarityBar />
     </Container>
 
     <Divider variant='middle' sx={{ marginTop: '25px', marginBottom: '25px' }} />

@@ -14,6 +14,7 @@ import TextField from '@mui/material/TextField'
 import Popover from '@mui/material/Popover'
 import FilterAltIcon from '@mui/icons-material/FilterAlt'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import Stack from '@mui/material/Stack'
 
 export function CustomTable(props) {
     const {
@@ -51,23 +52,20 @@ export function CustomTable(props) {
                                         <Grid item xs={10}>
                                             <div {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')}</div>
                                         </Grid>
-                                        <Grid item xs>
-                                            <Grid container
+                                        <Grid item xs={2}>
+                                            <Stack
                                                 direction="row"
                                                 justifyContent="flex-end"
                                                 alignItems="center"
-                                                spacing={1}>
-                                                <Grid item xs={column.canSort ? 6 : 0}>
-                                                    <TableSortLabel
-                                                        hideSortIcon={column.canSort}
-                                                        active={column.isSorted}
-                                                        direction={column.isSortedDesc ? 'desc' : 'asc'}
-                                                        IconComponent={KeyboardArrowDownIcon} />
-                                                </Grid>
-                                                <Grid item xs={column.canFilter ? 6 : 0}>
-                                                    {column.canFilter ? column.render('Filter') : null}
-                                                </Grid>
-                                            </Grid>
+                                                spacing={1}
+                                            >
+                                                <TableSortLabel
+                                                    hideSortIcon={column.canSort}
+                                                    active={column.isSorted}
+                                                    direction={column.isSortedDesc ? 'desc' : 'asc'}
+                                                    IconComponent={KeyboardArrowDownIcon} />
+                                                {column.canFilter ? column.render('Filter') : null}
+                                            </Stack>
                                         </Grid>
                                     </Grid>
                                 </TableCell>

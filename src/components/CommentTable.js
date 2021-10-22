@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { CustomTable } from './CustomTable.js'
-import LinearProgress from '@mui/material/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress'
 
 export function CommentTable() {
     const [data, isLoading] = useFetch('/comment_table')
